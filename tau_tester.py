@@ -14,16 +14,16 @@ import numpy as np
 # along with whether the flow is stable or not
 
 order = 1 # order of method: 4, 2 or 1 
-M = 500 # number of polynomials
+M = 140 # number of polynomials
 a = 1 # wavenumber
-R = 30000 # Reynolds number
+R = 10000 # Reynolds number
 flowtype = 'p' # 'c' or 'p'
 
-tau = ChebyshevTau(order, M, flowtype)
+tau = ChebyshevTau(order, M)
 
 eigs, vecs = tau.get_eigvals_eigvecs(a, R)
 
-print('Stable: ' + str(tau.critical_eig().imag > 0))
+print('Unstable: ' + str(tau.critical_eig().imag > 0))
 print('Critical eigenvalue= ' + str(tau.critical_eig()))
 
 plt = epssaver.saver(4, 4)
